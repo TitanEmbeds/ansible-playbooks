@@ -9,7 +9,7 @@ config = {
     'paypal-client-id': "Paypal client id",
     'paypal-client-secret': "Paypal client secret",
 
-    'app-location': "/var/www/Titan/webapp/",
+    'app-location': "/home/titan/Titan/webapp/",
     'app-secret': "Type something random here, go wild.",
 
     'database-uri': "driver://username:password@host:port/database",

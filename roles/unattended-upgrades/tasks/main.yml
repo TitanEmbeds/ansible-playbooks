@@ -1,5 +1,5 @@
 - name: Clone repository
-  git: clone=yes repo=https://github.com/TitanEmbeds/Titan.git dest=/home/endendragon/Titan
+  git: clone=yes repo=https://github.com/TitanEmbeds/Titan.git dest=/home/titan/Titan
   become_user: titan
 
 - name: Reset git to branch master
