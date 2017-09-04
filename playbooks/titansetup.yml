@@ -3,5 +3,3 @@
   roles:
     - role: ../../roles/setup
       tags: ['always']
-    - role: ../../roles/web
-      tags: ['web']
