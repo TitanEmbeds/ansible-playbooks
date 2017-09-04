@@ -1,0 +1,9 @@
+.vagrant
+.idea
+*.retry
+secret/
+*.swp
+vendor_roles/
+config.py
+config.webapp.py
+alembic.ini

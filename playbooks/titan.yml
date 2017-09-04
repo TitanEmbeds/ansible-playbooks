@@ -1,0 +1,15 @@
+- hosts: titanembeds
+  remote_user: root
+  roles:
+    - role: ../../roles/ansible-letsencrypt
+      tags: ['always']
+      letsencrypt_webroot_path: /etc/letsencrypt
+      letsencrypt_email: TheCraftedDragon@gmail.com
+      letsencrypt_cert_domains:
+        - titanembeds.com
+    - role: ../../roles/unattended-upgrades
+      tags: ['always']
+    - role: ../../roles/web
+      tags: ['web']
+    - role: ../../roles/bot
+      tags: ['bot']

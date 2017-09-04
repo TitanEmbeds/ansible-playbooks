@@ -1,0 +1,25 @@
+- name: Clone repository
+  git: clone=yes repo=https://github.com/TitanEmbeds/Titan.git dest=/home/endendragon/Titan
+  become_user: titan
+
+- name: Reset git to branch master
+  command: git reset --hard origin/master
+  become_user: titan
+  args:
+    chdir: /home/titan/Titan
+
+- name: Install required PIP packages
+  pip:
+    requirements: /home/titan/Titan/requirements.txt
+    state: latest
+
+- name: Install server additional PIP requirements
+  pip: name={{ item }} state=latest
+  with_items:
+    - alembic
+    - pymysql
+    - uwsgi
+
+- name: Run Alembic migrations
+  command: alembic upgrade head chdir=/home/titan/Titan/webapp
+  become_user: titan

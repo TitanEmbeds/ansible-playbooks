@@ -1,0 +1,2 @@
+- name: Restart discord bot
+  systemd: name=titanbot state=restarted enabled=yes

@@ -1,0 +1,75 @@
+- name: Create user for Titan
+  user: name=titan group=www-data state=present
+# For christs sake please use SSH Keys
+- name: Create .ssh directory
+  file: path=/home/titan/.ssh mode=0700 state=directory
+
+- name: Copy authorized key file
+  copy: src=authorized_keys dest= /home/titan/.ssh mode=0600
+
+- name: Install PostgreSQL, Redis Server and Python3
+  apt: pkg="{{ item }}" state=installed update_cache=true
+  with_items:
+    - build-essential
+    - tcl8.5
+    - postgresql
+    - postgresql-contrib
+    - redis-server
+    - python3
+    - python3-pip
+    - nginx
+
+- name: Install pip dependencies
+  pip: name="{{ item }}" state=latest
+  with_items:
+    - psycopg2
+    - alembic
+    - gevent
+    - uwsgi
+    - flask
+    - flask-sqlalchemy
+    - flask_limiter
+    - requests_oauthlib
+    - Flask_SSLify
+    - flask_socketio
+    - paypalrestsdk
+    - asyncio_extras
+    - kombu
+    - redis
+    - aioredis
+    - git+https://github.com/TitanEmbeds/discord.py/archive/async.zip#egg=discord.py[voice]
+
+- name: Initialize PostgreSQL DB
+  postgresql_db: name=titanembeds state=present encoding=UTF-8
+
+- name: Clone titan repository
+  git: clone=yes repo=https://github.com/TitanEmbeds/Titan.git dest=/home/titan/Titan
+  become_user: titan
+
+- name: Reset git to branch master
+  command: git reset --hard origin/master
+  args:
+    chdir: /home/titan/Titan
+
+#Be sure to modify and rename your config files to this naming convention /before/ running this role
+- name: Copy configuration files for titan
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: 'alembic.ini', dest: '/home/titan/Titan/webapp/alembic.ini' }
+    - { src: 'config.webapp.py', dest: '/home/titan/Titan/webapp/config.py' }
+    - { src: 'config.py', dest: '/home/titan/Titan/discordbot/config.py' }
+
+- name: Copy Systemd user services
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: 'titanbot.service', dest: '/etc/systemd/system/titanbot.service' }
+    - { src: 'titanembeds.service', dest: '/etc/systemd/system/titanembeds.service' }
+
+- name: Configure uWSGI
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: 'titanembeds_wsgi.ini', dest: '/var/www/titanembeds_wsgi.ini' }
+    - { src: 'titanembeds_wsgi.py', dest: '/var/www/titanembeds_wsgi.py' }
+
+- name: Conifigure nginx
+  copy: src=titan_nginx dest=/etc/nginx/sites-enabled/titanembeds

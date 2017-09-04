@@ -1,0 +1,26 @@
+server {
+    listen 80;
+    server_name titanembeds.com appledash.titanembeds.tk;
+
+    location / {
+        include uwsgi_params;
+        #uwsgi_pass 127.0.0.1:3031;
+        uwsgi_pass unix:/var/www/titanembeds.sock;
+    }
+
+    listen 443 ssl; # managed by Certbot
+ssl_certificate /etc/letsencrypt/live/titanembeds.com/fullchain.pem; # managed by Certbot
+ssl_certificate_key /etc/letsencrypt/live/titanembeds.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+
+
+    if ($scheme != "https") {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    location ^~ /static/ {
+        include /etc/nginx/mime.types;
+        root /home/endendragon/Titan/webapp/titanembeds/;
+    }
+
+}
