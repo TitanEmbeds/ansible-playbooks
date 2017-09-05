@@ -5,7 +5,7 @@
   file: path=/home/titan/.ssh mode=0700 state=directory
 
 - name: Copy authorized key file
-  copy: src=authorized_keys dest= /home/titan/.ssh mode=0600
+  copy: src=authorized_keys dest=/home/titan/.ssh mode=0600
 
 - name: Install PostgreSQL, Redis Server and Python3
   apt: pkg="{{ item }}" state=installed update_cache=true
