@@ -47,7 +47,8 @@
 
 - name: Initialize PostgreSQL DB
   postgresql_db: name=titanembeds state=present encoding=UTF-8
-
+  become_user: postgres
+  
 #Be sure to modify and rename your config files to this naming convention /before/ running this role
 - name: Copy configuration files for titan
   copy: src={{ item.src }} dest={{ item.dest }}
