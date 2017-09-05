@@ -41,6 +41,9 @@
     - alembic
     - gevent
     - uwsgi
+    
+- name: Ensure postgresql is running
+  systemd: name=postgresql state=started enabled=yes
 
 - name: Initialize PostgreSQL DB
   postgresql_db: name=titanembeds state=present encoding=UTF-8
