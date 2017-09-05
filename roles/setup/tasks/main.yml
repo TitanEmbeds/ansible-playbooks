@@ -19,25 +19,19 @@
     - python3-pip
     - nginx
 
-- name: Install pip dependencies
+- name: Install required PIP packages
+  pip:
+    requirements: /home/titan/Titan/requirements.txt
+    state: latest
+    executable: /usr/bin/pip3
+
+- name: Install server additional PIP requirements
   pip: name="{{ item }}" state=latest executable=/usr/bin/pip3
   with_items:
     - psycopg2
     - alembic
     - gevent
     - uwsgi
-    - flask
-    - flask-sqlalchemy
-    - flask_limiter
-    - requests_oauthlib
-    - Flask_SSLify
-    - flask_socketio
-    - paypalrestsdk
-    - asyncio_extras
-    - kombu
-    - redis
-    - aioredis
-    - git+https://github.com/TitanEmbeds/discord.py/archive/async.zip#egg=discord.py[voice]
 
 - name: Initialize PostgreSQL DB
   postgresql_db: name=titanembeds state=present encoding=UTF-8
