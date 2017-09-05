@@ -20,7 +20,7 @@
     - nginx
 
 - name: Install pip dependencies
-  pip: name="{{ item }}" state=latest executable:/usr/bin/pip3
+  pip: name="{{ item }}" state=latest executable=/usr/bin/pip3
   with_items:
     - psycopg2
     - alembic
