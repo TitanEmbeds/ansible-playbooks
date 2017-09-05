@@ -19,6 +19,15 @@
     - python3-pip
     - nginx
 
+- name: Clone titan repository
+  git: clone=yes repo=https://github.com/TitanEmbeds/Titan.git dest=/home/titan/Titan
+  become_user: titan
+
+- name: Reset git to branch master
+  command: git reset --hard origin/master
+  args:
+    chdir: /home/titan/Titan
+
 - name: Install required PIP packages
   pip:
     requirements: /home/titan/Titan/requirements.txt
@@ -35,15 +44,6 @@
 
 - name: Initialize PostgreSQL DB
   postgresql_db: name=titanembeds state=present encoding=UTF-8
-
-- name: Clone titan repository
-  git: clone=yes repo=https://github.com/TitanEmbeds/Titan.git dest=/home/titan/Titan
-  become_user: titan
-
-- name: Reset git to branch master
-  command: git reset --hard origin/master
-  args:
-    chdir: /home/titan/Titan
 
 #Be sure to modify and rename your config files to this naming convention /before/ running this role
 - name: Copy configuration files for titan
