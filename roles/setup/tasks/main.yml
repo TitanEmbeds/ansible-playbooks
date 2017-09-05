@@ -46,8 +46,9 @@
   service: name=postgresql state=started enabled=yes
 
 - name: Initialize PostgreSQL DB
-  postgresql_db: name=titanembeds state=present encoding=UTF-8
+  become: yes
   become_user: postgres
+  postgresql_db: name=titanembeds state=present encoding=UTF-8 template=template0
   
 #Be sure to modify and rename your config files to this naming convention /before/ running this role
 - name: Copy configuration files for titan
