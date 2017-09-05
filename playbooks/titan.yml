@@ -4,7 +4,7 @@
     - role: ../../roles/ansible-letsencrypt
       tags: ['always']
       letsencrypt_webroot_path: /etc/letsencrypt
-      letsencrypt_email: TheCraftedDragon@gmail.com
+      letsencrypt_email: RainbowDash@equestria.net
       letsencrypt_cert_domains:
         - titanembeds.com
     - role: ../../roles/unattended-upgrades
