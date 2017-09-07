@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name titanembeds.com appledash.titanembeds.tk;
+    server_name titanembeds.com;
 
     location / {
         include uwsgi_params;
@@ -9,9 +9,8 @@ server {
     }
 
     listen 443 ssl; # managed by Certbot
-ssl_certificate /etc/letsencrypt/live/titanembeds.com/fullchain.pem; # managed by Certbot
-ssl_certificate_key /etc/letsencrypt/live/titanembeds.com/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/titanembeds.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/titanembeds.com/privkey.pem;
 
 
     if ($scheme != "https") {
