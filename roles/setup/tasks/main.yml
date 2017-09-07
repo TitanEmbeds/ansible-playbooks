@@ -48,7 +48,7 @@
 - name: Initialize PostgreSQL DB
   become: yes
   become_user: postgres
-  postgresql_db: name=titanembeds state=present encoding=UTF-8 template=template0
+  postgresql_db: name=titanembeds state=present encoding=UTF-8 template=template0 owner=titan
   
 #Be sure to modify and rename your config files to this naming convention /before/ running this role
 - name: Copy configuration files for titan
