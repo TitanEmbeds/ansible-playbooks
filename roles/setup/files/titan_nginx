@@ -19,7 +19,7 @@ server {
 
     location ^~ /static/ {
         include /etc/nginx/mime.types;
-        root /home/endendragon/Titan/webapp/titanembeds/;
+        root /home/titan/Titan/webapp/titanembeds/;
     }
 
 }
