@@ -1,3 +1,9 @@
+- name: Compiling translations
+  command: ./bin/tr_compile.py
+  become_user: titan
+  args:
+    chdir: /home/titan/Titan/webapp
+
 - name: Restart webserver
   systemd: name=titanembeds state=restarted enabled=yes
 
