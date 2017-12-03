@@ -7,6 +7,7 @@
       letsencrypt_email: RainbowDash@equestria.net
       letsencrypt_cert_domains:
         - titanembeds.com
+      letsencrypt_renewal_command_args: '--renew-hook "service nginx restart"'
     - role: ../../roles/unattended-upgrades
       tags: ['always']
     - role: ../../roles/web
