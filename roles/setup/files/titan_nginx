@@ -21,5 +21,10 @@ server {
         include /etc/nginx/mime.types;
         root /home/titan/Titan/webapp/titanembeds/;
     }
+    
+    location ^~ /.well-known/ {
+        include /etc/nginx/mime.types;
+        root /var/www/wellknown/;
+    }
 
 }
