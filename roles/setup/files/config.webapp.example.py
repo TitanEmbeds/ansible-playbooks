@@ -22,5 +22,5 @@ config = {
 
     'database-uri': "driver://username:password@host:port/database",
     'redis-uri': "redis://",
-    'websockets-mode': "LITTERALLY None or eventlet or gevent",
+    'websockets-mode': "LITTERALLY None or eventlet",
 }
