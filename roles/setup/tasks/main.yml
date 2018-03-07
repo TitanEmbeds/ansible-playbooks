@@ -39,7 +39,7 @@
   with_items:
     - psycopg2
     - alembic
-    - gevent
+    - eventlet
     - gunicorn3
     
 - name: Ensure postgresql is running
