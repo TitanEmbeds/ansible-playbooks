@@ -4,7 +4,6 @@ After=syslog.target
 
 [Service]
 User=titan
-Type=notify
 WorkingDirectory=/home/titan/Titan/webapp
 ExecStart=/usr/bin/gunicorn3 --worker-class eventlet -w 1 -b unix:/var/www/titanembeds.sock titanembeds.app:app
 TimeoutSec=infinity
