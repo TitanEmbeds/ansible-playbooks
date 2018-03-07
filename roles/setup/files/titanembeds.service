@@ -1,12 +1,12 @@
 [Unit]
-Description=uWSGI server instance configured to serve titanembeds
+Description=gunicorn3 server instance configured to serve titanembeds
 After=syslog.target
 
 [Service]
 User=titan
 Type=notify
-WorkingDirectory=/var/www
-ExecStart=/usr/local/bin/uwsgi --die-on-term --gevent 1000 --http-websockets --master --ini /var/www/titanembeds_wsgi.ini --logto2 /var/log/uwsgi/uwsgi.log --log-reopen --log-maxsize 104857600 --gevent-monkey-patch
+WorkingDirectory=/home/titan/Titan/webapp
+ExecStart=/usr/bin/gunicorn3 --worker-class eventlet -w 1 -b unix:/var/www/titanembeds.sock titanembeds.app:app
 TimeoutSec=infinity
 Restart=on-failure
 KillSignal=SIGTERM
