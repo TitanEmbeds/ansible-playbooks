@@ -19,7 +19,7 @@
   with_items:
     - alembic
     - pymysql
-    - uwsgi
+    - gunicorn
 
 - name: Run Alembic migrations
   command: alembic upgrade head chdir=/home/titan/Titan/webapp
