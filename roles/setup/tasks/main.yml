@@ -40,7 +40,7 @@
     - psycopg2
     - alembic
     - gevent
-    - uwsgi
+    - gunicorn3
     
 - name: Ensure postgresql is running
   service: name=postgresql state=started enabled=yes
@@ -63,12 +63,6 @@
   with_items:
     - { src: 'titanbot.service', dest: '/etc/systemd/system/titanbot.service' }
     - { src: 'titanembeds.service', dest: '/etc/systemd/system/titanembeds.service' }
-
-- name: Configure uWSGI
-  copy: src={{ item.src }} dest={{ item.dest }}
-  with_items:
-    - { src: 'titanembeds_wsgi.ini', dest: '/var/www/titanembeds_wsgi.ini' }
-    - { src: 'titanembeds_wsgi.py', dest: '/var/www/titanembeds_wsgi.py' }
 
 - name: Conifigure nginx
   copy: src=titan_nginx dest=/etc/nginx/sites-enabled/titanembeds
