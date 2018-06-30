@@ -40,7 +40,7 @@
     - psycopg2
     - alembic
     - eventlet
-    - gunicorn3
+    - gunicorn
     
 - name: Ensure postgresql is running
   service: name=postgresql state=started enabled=yes
