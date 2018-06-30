@@ -45,6 +45,13 @@
 - name: Ensure postgresql is running
   service: name=postgresql state=started enabled=yes
 
+- name: Add titan postgresql user
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    name: titan
+    state: present 
+
 - name: Initialize PostgreSQL DB
   become: yes
   become_user: postgres
