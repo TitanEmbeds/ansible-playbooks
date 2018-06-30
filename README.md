@@ -15,12 +15,12 @@ So you wanted to install Titan on your own Ubuntu? No problem!
     - `config.py` - This is the configuration for the Titan discordbot. Add in your bot token. Keep `database-uri` as is for now. 
     - `config.webapp.py` - This is the configuation for the flask webapp. Enter the information for the Discord's app `client-id`, `client-secret`, and `bot-token`. Enter your paypal `client-id` and `client-secret` if you have one. Type something random for `app-secret`. 
     - `titan_nginx` - Modify the `server_name` to the domain and tld of yours. 
+    - `/tasks/main.yml` - Modify the password field for your database.
 7. `cd /root/ansible-playbooks` and modify `hosts` file with your domain, replacing `titanembeds.com`. 
 8. Enable the letsencrypt task by changing the directory to `ansible-playbooks/roles/ansible-letsencrypt` and run `git submodule init` and `git submodule update --recursive --remote` 
 9. Now you may let ansible setup the server. Run `ansible-playbook -i hosts playbooks/titansetup.yml` in the directory `ansible-playbooks`. 
 10. Start the redis server `sudo systemctl start redis` 
 11. Make sure the Titan directory is owned by the titan user. `sudo chown -R titan:www-data /home/titan/Titan/` 
-12. Switch to the postgres user `sudo su postgres`, run postgres cli `psql`, and create a user named `titan`: `CREATE USER titan WITH PASSWORD 'DatabasePASSWORDHere' CREATEDB;`. Exit cli with `\q`. 
 13. Switch user to titan `sudo su titan` and edit your database connections in the config files inside `/home/titan/Titan`: `webapp/alembic.ini`, `webapp/config.py`, `discordbot/config.py` to `postgresql+psycopg2://titan:DatabasePASSWORDHere@localhost:5432/titanembeds?client_encoding=utf8`. 
 14. Exit titan user `exit` and run the upgrade tasks `cd /root/ansible-playbooks; ansible-playbook -i hosts playbooks/titan.yml --tags "web,bot";`. 
 15. Congratulations, if everything went well, you have successfully setup Titan Embeds on your own server! 
