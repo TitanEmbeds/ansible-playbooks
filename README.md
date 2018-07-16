@@ -32,7 +32,7 @@ If you are running Titan Embeds from a local connection with Ubuntu please add `
     - `titan_nginx` - Modify the `server_name` to the domain and tld of yours.
     - `/tasks/main.yml` - Modify the password field for your database.
     - `/playbooks/titan.yml` - Modify `letsencrypt_email` to your e-mail and `letsencrypt_cert_domains` to your domain.
-    - `/ansible-playbooks` and modify `hosts` file with your domain, replacing `titanembeds.com`.
+    - `/ansible-playbooks` and modify `hosts` file with your domain, replacing `change_me`.
 
 10. Enable the letsencrypt task by changing the directory to `ansible-playbooks/roles/ansible-letsencrypt` and run `git submodule init` and `git submodule update --recursive --remote`
 
