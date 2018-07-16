@@ -36,8 +36,6 @@ If you are running Titan Embeds from a local connection with Ubuntu please add `
 
 10. Enable the letsencrypt task by changing the directory to `ansible-playbooks/roles/ansible-letsencrypt` and run `git submodule init` and `git submodule update --recursive --remote`
 
-
-
 11. Now you may let ansible setup the server. Run `ansible-playbook -i hosts playbooks/titansetup.yml` in the directory `ansible-playbooks`.
 
 12. Start the redis server `sudo systemctl start redis`
