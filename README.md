@@ -17,7 +17,7 @@ If you are running Titan Embeds from a local connection with Ubuntu please add `
 
 4. Run `apt-get install postgresql postgresql-contrib` following that run `update-rc.d postgresql enable` and then following that run `service postgresql start`
 
-5. Run `sudo -u postgres createuser titan` then `sudo -u postgres createdb titanembeds` following that `sudo -u postgres psql` after a window pops up run `alter user titan with encrypted password '<password>;'` then lastly run `grant all privileges on database titanembeds to titan;` to exit postgresql run `\q`.
+5. Run `sudo -u postgres createuser titan` then `sudo -u postgres createdb titanembeds` following that `sudo -u postgres psql` after a window pops up run `alter user titan with encrypted password '<password>;'` then lastly run `grant all privileges on database titanembeds to titan ;` to exit postgresql run `\q`.
 
 6. Install a few prerequisites: `sudo apt install ansible git python-psycopg2`.
 
