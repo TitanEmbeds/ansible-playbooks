@@ -1,10 +1,14 @@
-![Titan Embeds!](https://titanembeds.com/static/img/titanembeds.png "Titan Embeds!")
+![Titan Embeds!](https://i.imgur.com/v7iqMj8.png "Titan Embeds!")
 
 # Automated server setup with Ansible! 
+
+**The current version of this build is optimized for Ubuntu 18.04, please visit the Discord support server for additional support of ansible-playbooks setup/installation of Titan Embeds.**
  
 --- 
 ## Installation Instructions 
-So you wanted to install Titan on your own Ubuntu? No problem! 
+
+If you are running Titan Embeds from a local connection with Ubuntu please add `--connection=local` after `hosts` in `ansible-playbook -i hosts` Example: `ansible-playbook -i hosts --connection=local playbooks/titansetup.yml`
+
 1. Create a bot user from https://discordapp.com/developers/applications/me. Insert the following redirect uris: `https://DOMAIN.TLD/user/callback` and `https://DOMAIN.TLD/user/dashboard`. 
 2. Escalate to the root user: `sudo su` 
 3. Install a few prerequisites: `apt install ansible git python-psycopg2`. 
@@ -16,6 +20,7 @@ So you wanted to install Titan on your own Ubuntu? No problem!
     - `config.webapp.py` - This is the configuation for the flask webapp. Enter the information for the Discord's app `client-id`, `client-secret`, and `bot-token`. Enter your paypal `client-id` and `client-secret` if you have one. Type something random for `app-secret`. 
     - `titan_nginx` - Modify the `server_name` to the domain and tld of yours. 
     - `/tasks/main.yml` - Modify the password field for your database.
+    - `/playbooks/titan.yml` - Modify `letsencrypt_email` to your e-mail and `letsencrypt_cert_domains` to your domain.
 7. `cd /root/ansible-playbooks` and modify `hosts` file with your domain, replacing `titanembeds.com`. 
 8. Enable the letsencrypt task by changing the directory to `ansible-playbooks/roles/ansible-letsencrypt` and run `git submodule init` and `git submodule update --recursive --remote` 
 9. Now you may let ansible setup the server. Run `ansible-playbook -i hosts playbooks/titansetup.yml` in the directory `ansible-playbooks`. 
