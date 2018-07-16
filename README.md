@@ -13,13 +13,15 @@ If you are running Titan Embeds from a local connection with Ubuntu please add `
 
 2. Escalate to the root user: `sudo su`
 
-3. Install a few prerequisites: `apt install ansible git python-psycopg2`.
+3. Run `sudo apt-get upgrade` after that finishes run `sudo apt-get update`
 
-4. Git clone this repository into the home directory of root.
+4. Install a few prerequisites: `sudo apt install ansible git python-psycopg2`.
 
-5. `cd /root/ansible-playbooks/roles/setup/files` and create your configuration files, replacing all the `.example.` with their counterparts. For example, `config.example.py` becomes `config.py` in the same directory. Ansible will move those files to the correct directory during installation.
+5. Git clone this repository into the home directory of root.
 
-6. Modify the following files to your likings:
+6. `cd /root/ansible-playbooks/roles/setup/files` and create your configuration files, replacing all the `.example.` with their counterparts. For example, `config.example.py` becomes `config.py` in the same directory. Ansible will move those files to the correct directory during installation.
+
+7. Modify the following files to your likings:
     - `authorized_keys` - Adding any keys you would like to add to work for the `titan` user
     - `config.py` - This is the configuration for the Titan discordbot. Add in your bot token. Keep `database-uri` as is for now.
     - `config.webapp.py` - This is the configuation for the flask webapp. Enter the information for the Discord's app `client-id`, `client-secret`, and `bot-token`. Enter your paypal `client-id` and `client-secret` if you have one. Type something random for `app-secret`.
@@ -36,8 +38,8 @@ If you are running Titan Embeds from a local connection with Ubuntu please add `
 
 11. Make sure the Titan directory is owned by the `titan` user. `sudo chown -R titan:www-data /home/titan/Titan/`
 
-13. Switch user to titan `sudo su titan` and edit your database connections in the config files inside `/home/titan/Titan`: `webapp/alembic.ini`, `webapp/config.py`, `discordbot/config.py` to `postgresql+psycopg2://titan:DatabasePASSWORDHere@localhost:5432/titanembeds?client_encoding=utf8`.
+12. Switch user to titan `sudo su titan` and edit your database connections in the config files inside `/home/titan/Titan`: `webapp/alembic.ini`, `webapp/config.py`, `discordbot/config.py` to `postgresql+psycopg2://titan:DatabasePASSWORDHere@localhost:5432/titanembeds?client_encoding=utf8`.
 
-14. Exit titan user `exit` and run the upgrade tasks `cd /root/ansible-playbooks; ansible-playbook -i hosts playbooks/titan.yml --tags "web,bot";`.
+13. Exit titan user `exit` and run the upgrade tasks `cd /root/ansible-playbooks; ansible-playbook -i hosts playbooks/titan.yml --tags "web,bot";`.
 
-15. Done!
+14. Done!
