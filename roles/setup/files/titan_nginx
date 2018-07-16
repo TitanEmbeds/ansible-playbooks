@@ -6,7 +6,7 @@ upstream titanws {
 }
 server {
     listen 80;
-    server_name change_me;
+    server_name titanembeds.com;
 
   location / {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
