@@ -24,7 +24,7 @@
   become_user: titan
 
 - name: Reset git to branch master
-  command: git reset --hard origin/master
+  command: git checkout 16.04
   args:
     chdir: /home/titan/Titan
 
