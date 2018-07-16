@@ -1,11 +1,11 @@
 [Unit]
-Description=gunicorn3 server instance configured to serve titanembeds
+Description=gunicorn server instance configured to serve titanembeds
 After=syslog.target
 
 [Service]
 User=titan
 WorkingDirectory=/home/titan/Titan/webapp
-ExecStart=/usr/bin/gunicorn3 --worker-class eventlet -w 1 -b unix:/var/www/titanembeds.sock titanembeds.app:app
+ExecStart=/usr/bin/gunicorn --worker-class eventlet -w 1 -b unix:/var/www/titanembeds.sock titanembeds.app:app
 TimeoutSec=infinity
 Restart=on-failure
 KillSignal=SIGTERM
