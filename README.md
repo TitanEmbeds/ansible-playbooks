@@ -4,6 +4,9 @@
  
 --- 
 ## Installation Instructions 
+
+NOTE: If you are running this locally on steps 9 and 14 you must add --connection=local beside the hosts as follows `ansible-playbook -i hosts --connection=local playbooks/titansetup.yml` and line 14: `d /root/ansible-playbooks; ansible-playbook -i hosts --connection=local playbooks/titan.yml --tags "web,bot";
+
 So you wanted to install Titan on your own Ubuntu? No problem! 
 1. Create a bot user from https://discordapp.com/developers/applications/me. Insert the following redirect uris: `https://DOMAIN.TLD/user/callback` and `https://DOMAIN.TLD/user/dashboard`. 
 2. Escalate to the root user: `sudo su` 
