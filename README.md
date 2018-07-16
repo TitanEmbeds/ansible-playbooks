@@ -20,6 +20,7 @@ If you are running Titan Embeds from a local connection with Ubuntu please add `
     - `config.webapp.py` - This is the configuation for the flask webapp. Enter the information for the Discord's app `client-id`, `client-secret`, and `bot-token`. Enter your paypal `client-id` and `client-secret` if you have one. Type something random for `app-secret`. 
     - `titan_nginx` - Modify the `server_name` to the domain and tld of yours. 
     - `/tasks/main.yml` - Modify the password field for your database.
+    - `/playbooks/titan.yml` - Modify `letsencrypt_email` to your e-mail and `letsencrypt_cert_domains` to your domain.
 7. `cd /root/ansible-playbooks` and modify `hosts` file with your domain, replacing `titanembeds.com`. 
 8. Enable the letsencrypt task by changing the directory to `ansible-playbooks/roles/ansible-letsencrypt` and run `git submodule init` and `git submodule update --recursive --remote` 
 9. Now you may let ansible setup the server. Run `ansible-playbook -i hosts playbooks/titansetup.yml` in the directory `ansible-playbooks`. 
