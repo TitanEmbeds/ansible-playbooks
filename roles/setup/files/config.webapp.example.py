@@ -4,16 +4,16 @@ config = {
     'client-id': "Your app client id",
     'client-secret': "Your discord client secret",
     'bot-token': "Discord bot token",
-    
+
     # Rest API in https://developer.paypal.com/developer/applications
     'paypal-client-id': "Paypal client id",
     'paypal-client-secret': "Paypal client secret",
-    
+
     # V2 reCAPTCHA from https://www.google.com/recaptcha/admin
     'recaptcha-site-key': "reCAPTCHA v2 Site Key",
     'recaptcha-secret-key': "reCAPTCHA v2 Secret Key",
-    
-    # Patreon
+
+    # Patreon from https://www.patreon.com/portal
     'patreon-client-id': "Patreon client id",
     'patreon-client-secret': "Patreon client secret",
 
