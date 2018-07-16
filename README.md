@@ -1,13 +1,13 @@
-![Titan Embeds!](https://weed.moe/ly9cf4Td.png "Titan Embeds!")
+![Titan Embeds!](https://i.imgur.com/v7iqMj8.png "Titan Embeds!")
 
 # Automated server setup with Ansible! 
+
+**The current version of this build is optimized for Ubuntu 18.04, please visit the Discord support server for additional support of ansible-playbooks setup/installation of Titan Embeds.**
  
 --- 
 ## Installation Instructions 
 
-**NOTE:** If you are running this locally on steps 9 and 14 you must add --connection=local beside the hosts as follows `ansible-playbook -i hosts --connection=local playbooks/titansetup.yml` and line 14: `cd /root/ansible-playbooks; ansible-playbook -i hosts --connection=local playbooks/titan.yml --tags "web,bot";
-
-**The current version of this build is optimized for Ubuntu 18.04, please visit the Discord support server for additional support of ansible-playbooks setup/installation of Titan Embeds.**
+If you are running Titan Embeds from a local connection with Ubuntu please add `--connection=local` after `hosts` in `ansible-playbook -i hosts` Example: `ansible-playbook -i hosts --connection=local playbooks/titansetup.yml`
 
 1. Create a bot user from https://discordapp.com/developers/applications/me. Insert the following redirect uris: `https://DOMAIN.TLD/user/callback` and `https://DOMAIN.TLD/user/dashboard`. 
 2. Escalate to the root user: `sudo su` 
