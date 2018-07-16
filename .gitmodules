@@ -1,3 +1,0 @@
-[submodule "roles/ansible-letsencrypt"]
-	path = roles/ansible-letsencrypt
-	url = https://github.com/thefinn93/ansible-letsencrypt
