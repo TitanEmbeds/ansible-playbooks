@@ -1,5 +1,0 @@
-- hosts: titanembeds
-  remote_user: root
-  roles:
-    - role: ../../roles/setup
-      tags: ['always']
