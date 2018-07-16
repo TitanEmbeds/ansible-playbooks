@@ -24,7 +24,7 @@
   become_user: titan
 
 - name: Reset git to branch master
-  command: git reset --hard origin/master
+  command: git checkout 18.04
   args:
     chdir: /home/titan/Titan
 
@@ -41,7 +41,7 @@
     - alembic
     - eventlet
     - gunicorn
-    
+
 - name: Ensure postgresql is running
   service: name=postgresql state=started enabled=yes
 
@@ -51,13 +51,13 @@
   postgresql_user:
     name: titan
     password: passwordhere
-    state: present 
+    state: present
 
 - name: Initialize PostgreSQL DB
   become: yes
   become_user: postgres
   postgresql_db: name=titanembeds state=present encoding=UTF-8 template=template0 owner=titan
-  
+
 #Be sure to modify and rename your config files to this naming convention /before/ running this role
 - name: Copy configuration files for titan
   copy: src={{ item.src }} dest={{ item.dest }}
