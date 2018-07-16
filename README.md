@@ -15,7 +15,7 @@ If you are running Titan Embeds from a local connection with Ubuntu please add `
 
 3. Run `sudo apt-get upgrade` after that finishes run `sudo apt-get update`
 
-4. Run `apt-get install postgresql postgresql-contrib` following that run `update-rc.d postgresql enable` and then following that run `service postgresql start`
+4. Run `sudo apt-get install postgresql postgresql-contrib` following that run `update-rc.d postgresql enable` and then following that run `sudo service postgresql start`
 
 5. Run `sudo -u postgres createuser titan` then `sudo -u postgres createdb titanembeds` following that `sudo -u postgres psql` after a window pops up run `alter user titan with encrypted password '<password>;'` then lastly run `grant all privileges on database titanembeds to titan ;` to exit postgresql run `\q`.
 
@@ -29,10 +29,10 @@ If you are running Titan Embeds from a local connection with Ubuntu please add `
     - `authorized_keys` - Adding any keys you would like to add to work for the `titan` user
     - `config.py` - This is the configuration for the Titan discordbot. Add in your bot token. Keep `database-uri` as is for now.
     - `config.webapp.py` - This is the configuation for the flask webapp. Enter the information for the Discord's app `client-id`, `client-secret`, and `bot-token`. Enter your paypal `client-id` and `client-secret` if you have one. Type something random for `app-secret`.
-    - `titan_nginx` - Modify the `server_name` to the domain and tld of yours.
+    - `titan_nginx` - Modify the `server_name` to the domain and tld of yours and modify `ssl_certificate_key /etc/letsencrypt/live/change_me/privkey.pem;` field change_me to your domain including the publickey.
     - `/tasks/main.yml` - Modify the password field for your database.
     - `/playbooks/titan.yml` - Modify `letsencrypt_email` to your e-mail and `letsencrypt_cert_domains` to your domain.
-    - `/ansible-playbooks` and modify `hosts` file with your domain, replacing `titanembeds.com`.
+    - `/ansible-playbooks` and modify `hosts` file with your domain, replacing `change_me`.
 
 10. Enable the letsencrypt task by changing the directory to `ansible-playbooks/roles/ansible-letsencrypt` and run `git submodule init` and `git submodule update --recursive --remote`
 
