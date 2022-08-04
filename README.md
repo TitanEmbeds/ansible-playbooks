@@ -29,6 +29,7 @@
     - `authorized_keys` - Adding any keys you would like to add to work for the `titan` user
     - `config.py` - This is the configuration for the Titan discordbot. Add in your bot token. Keep `database-uri` as is for now.
     - `config.webapp.py` - This is the configuation for the flask webapp. Enter the information for the Discord's app `client-id`, `client-secret`, and `bot-token`. Enter your paypal `client-id` and `client-secret` if you have one. Type something random for `app-secret`.
+    - `alembic.ini` - This is the database setup file. We will modify this file later.
     - `titan_nginx` - Modify the `server_name` to the domain and tld of yours and modify `ssl_certificate_key /etc/letsencrypt/live/change_me/privkey.pem;` field change_me to your domain including the publickey.
     - `/playbooks/titan.yml` - Modify `letsencrypt_email` to your e-mail and `letsencrypt_cert_domains` to your domain.
     - `/ansible-playbooks` and modify `hosts` file with your domain, replacing `change_me`.
