@@ -7,7 +7,7 @@
 ---
 ## Installation Instructions
 
-If you are running Titan Embeds from a local connection with Ubuntu please add `--connection=local` after `hosts` in `ansible-playbook -i hosts` Example: `ansible-playbook -i hosts --connection=local playbooks/titansetup.yml`
+**[Local-Notice]** If you are running Titan Embeds from a local connection with Ubuntu please add `--connection=local` after `hosts` in `ansible-playbook -i hosts` Example: `ansible-playbook -i hosts --connection=local playbooks/titansetup.yml`
 
 1. Create a bot user from https://discordapp.com/developers/applications/me. Insert the following redirect uris: `https://DOMAIN.TLD/user/callback` and `https://DOMAIN.TLD/user/dashboard`.
 
@@ -19,7 +19,7 @@ If you are running Titan Embeds from a local connection with Ubuntu please add `
 
 5. Run `sudo -u postgres createuser titan` then `sudo -u postgres createdb titanembeds` following that `sudo -u postgres psql` after a window pops up run `alter user titan with encrypted password '<password>';` then lastly run `grant all privileges on database titanembeds to titan ;` to exit postgresql run `\q`.
 
-6. Install a few prerequisites: `sudo apt install ansible git python-psycopg2`.
+6. Install a few prerequisites: `sudo apt install ansible git python3-psycopg2`.
 
 7. Git clone this repository into the home directory of root.
 
@@ -35,7 +35,7 @@ If you are running Titan Embeds from a local connection with Ubuntu please add `
 
 10. Enable the letsencrypt task by changing the directory to `ansible-playbooks/roles/ansible-letsencrypt` and run `git submodule init` and `git submodule update --recursive --remote`
 
-11. Now you may let ansible setup the server. Run `ansible-playbook -i hosts playbooks/titansetup.yml` in the directory `ansible-playbooks`.
+11. Now you may let ansible setup the server. Run `ansible-playbook -i hosts playbooks/titansetup.yml` in the directory `ansible-playbooks`. (Please see section Local-Notice above if this is relevant)
 
 12. Start the redis server `sudo systemctl start redis`
 
@@ -43,6 +43,6 @@ If you are running Titan Embeds from a local connection with Ubuntu please add `
 
 14. Switch user to titan `sudo su titan` and edit your database connections in the config files inside `/home/titan/Titan`: `webapp/alembic.ini`, `webapp/config.py`, `discordbot/config.py` to `postgresql+psycopg2://titan:DatabasePASSWORDHere@localhost:5432/titanembeds?client_encoding=utf8`.
 
-15. Exit titan user `exit` and run the upgrade tasks `cd /root/ansible-playbooks; ansible-playbook -i hosts playbooks/titan.yml --tags "web,bot";`.
+15. Exit titan user `exit` and run the upgrade tasks `cd /root/ansible-playbooks; ansible-playbook -i hosts playbooks/titan.yml --tags "web,bot";`. (Please see section Local-Notice above if this is relevant)
 
 16. Done!
