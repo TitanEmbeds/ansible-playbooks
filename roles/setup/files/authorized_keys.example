@@ -1,2 +1,1 @@
-[discord owner user id]
-https://support.discordapp.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-
+Paste your public ssh key here and remove all of this this text! This will allow SSH access to the user that you place this under so make sure that you configure your ansible host correctly.
