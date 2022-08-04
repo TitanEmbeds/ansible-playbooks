@@ -35,7 +35,6 @@
 - name: Install server additional PIP requirements
   pip: name="{{ item }}" state=latest executable=/usr/bin/pip3
   with_items:
-    - psycopg2
     - alembic
     - eventlet
     - gunicorn
