@@ -3,7 +3,6 @@
 config = {
     # Discord Bot Token
     'bot-token': "Bot - Token",
-    'bot-token': "Discord bot token",
 
     # Do not edit
     'database-uri': "driver://username:password@host:port/database",
