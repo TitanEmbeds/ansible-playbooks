@@ -46,7 +46,7 @@
 - name: Copy configuration files for titan
   copy: src={{ item.src }} dest={{ item.dest }}
   with_items:
-    - { src: 'alembic.ini', dest: '/home/titan/Titan/webapp/alembic.ini' }
+    - { src: 'alembic.example.ini', dest: '/home/titan/Titan/webapp/alembic.ini' }
     - { src: 'config.webapp.py', dest: '/home/titan/Titan/webapp/config.py' }
     - { src: 'config.py', dest: '/home/titan/Titan/discordbot/config.py' }
 
